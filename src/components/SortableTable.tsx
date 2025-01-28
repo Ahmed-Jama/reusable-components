@@ -37,10 +37,12 @@ const SortableTable: React.FC<SortTableProps> = (
 
   let sortedData = data;
   if (sortBy && sortOrder) {
-    const { sortValue } = config.find((column) => column.label == sortBy);
+    // const {sortValue} = config.find((column) => column.label == sortBy);
+    const columnConfig = config.find((column) => column.label == sortBy);
+    const sortValue = columnConfig?.sortValue;
     sortedData = [...data].sort((a, b) => {
-      const valueA = sortValue(a);
-      const valueB = sortValue(b);
+      const valueA = sortValue!(a);
+      const valueB = sortValue!(b);
 
       const reverseOrder = sortOrder == "asc" ? 1 : -1;
 
