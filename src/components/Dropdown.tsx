@@ -1,7 +1,6 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { Divider } from "@nextui-org/react";
 
 type Option = {
   label: string;
@@ -48,7 +47,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
   };
 
   return (
-    <div ref={divEl} className="relative m-auto w-48 pt-8 text-xl">
+    <div ref={divEl} className="relative w-48 pt-8 m-auto text-xl">
       <div
         className="mb-[2px] flex cursor-pointer items-center justify-between rounded-xl border border-zinc-400 bg-zinc-100 px-5 py-2 shadow shadow-zinc-400"
         onClick={() => setOpen(!open)}
@@ -59,7 +58,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="absolute z-10 flex origin-top flex-col overflow-hidden rounded-xl border-1 border-zinc-400 bg-zinc-100 shadow shadow-zinc-400"
+            className="absolute z-10 flex flex-col overflow-hidden origin-top shadow rounded-xl border-1 border-zinc-400 bg-zinc-100 shadow-zinc-400"
             variants={dropdownVars}
             initial="initial"
             animate="animate"
@@ -68,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
             {options.map((option: Option) => {
               return (
                 <div
-                  className="flex w-48 cursor-pointer items-center px-5 py-2 text-xl hover:bg-zinc-200"
+                  className="flex items-center w-48 px-5 py-2 text-xl cursor-pointer hover:bg-zinc-200"
                   key={option.value}
                   onClick={() => onSelectOption(option)}
                 >
