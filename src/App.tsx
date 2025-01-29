@@ -5,12 +5,14 @@ import Route from "./components/Route";
 import Sidebar from "./components/Sidebar";
 import ModalPage from "./pages/ModalPage";
 import TablePage from "./pages/TablePage";
+import TooltipPage from "./pages/TooltipPage";
 
+// ToDo add a tooltip reuseable component
 function App() {
   return (
     <div className="flex w-full">
       <Sidebar />
-      <div className="flex-1 h-screen p-3 pl-40">
+      <div className="ml-[clamp(50px,30%,192px)] h-screen flex-1 p-3">
         <Route path="/">
           <DropdownPage />
         </Route>
@@ -25,6 +27,9 @@ function App() {
         </Route>
         <Route path="/table">
           <TablePage />
+        </Route>
+        <Route path="/tooltip">
+          <TooltipPage />
         </Route>
       </div>
     </div>
