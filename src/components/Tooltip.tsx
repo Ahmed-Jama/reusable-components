@@ -11,14 +11,14 @@ const Tooltip: React.FC<TooltipProps> = ({
   children,
   className,
   content,
-  place,
+  place = "top",
 }) => {
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
   // place = "top";
 
   const tooltipStyle = classNames(
     className,
-    `absolute m-1 w-fit cursor-default self-center rounded-md bg-gray-800 p-2 text-xs text-white transition-opacity ${showTooltip ? "opacity-100" : "opacity-0"}`,
+    `absolute m-1 w-fit cursor-default self-center rounded-md bg-gray-800 p-2 text-xs text-white transition-opacity ${showTooltip ? "opacity-80" : "opacity-0"}`,
     {
       "bottom-[100%]": place === "top",
       "top-[100%]": place === "bottom",
@@ -27,17 +27,24 @@ const Tooltip: React.FC<TooltipProps> = ({
     },
   );
 
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const handleMouseEnter = () => {
+    timeoutRef.current = setTimeout(() => setShowTooltip(true), 600);
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setShowTooltip(false);
+  };
+
   return (
-    <div
-      className="relative flex w-fit flex-col items-center justify-center"
-      onMouseEnter={() =>
-        setTimeout(() => {
-          setShowTooltip(true);
-        }, 700)
-      }
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      <div>{children}</div>
+    <div className="relative flex w-fit flex-col items-center justify-center">
+      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {children}
+      </div>
       <div className={tooltipStyle}>{content}</div>
     </div>
   );

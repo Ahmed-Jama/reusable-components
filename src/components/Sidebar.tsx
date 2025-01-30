@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     //! items.start make you hover over the text instead of the box
     <div className="fixed left-0 top-0 flex h-full w-[30%] max-w-48 flex-col items-start overflow-y-auto overflow-x-hidden bg-gray-200 shadow-lg shadow-zinc-500">
-      <h1 className="w-full bg-blue-500 px-3 py-1 pb-2 text-2xl font-bold text-white">
+      <h1 className="w-full bg-blue-500 px-3 py-1 pb-2 text-xl font-bold text-white">
         Reuseable Components
       </h1>
       <div className="flex flex-col p-1 px-2">
