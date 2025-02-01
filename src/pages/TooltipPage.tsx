@@ -8,17 +8,17 @@ const TooltipPage = () => {
       <h1 className="p-2 text-xl font-semibold">Follow on social media</h1>
       <div className="flex gap-4">
         {/* Default place = 'top' */}
-        <Tooltip content="Github">
+        <Tooltip content="Github" place="left">
           <Button outline rounded>
             <Github />
           </Button>
         </Tooltip>
-        <Tooltip content="Twitter" place="bottom">
+        <Tooltip content="Twitter">
           <Button primary outline rounded>
             <Twitter />
           </Button>
         </Tooltip>
-        <Tooltip content="Twitch">
+        <Tooltip content="Twitch" place="bottom">
           <Button secondary outline rounded>
             <Twitch />
           </Button>
@@ -28,7 +28,7 @@ const TooltipPage = () => {
             <Instagram />
           </Button>
         </Tooltip>
-        <Tooltip content="Youtube">
+        <Tooltip content="Youtube" place="right">
           <Button danger outline rounded>
             <Youtube />
           </Button>
